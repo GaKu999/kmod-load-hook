@@ -1,0 +1,19 @@
+# vim:ft=confini:
+
+[Trigger]
+Type=Path
+
+Operation=Install
+Operation=Upgrade
+
+Target=usr/lib/modules/*/vmlinuz
+
+[Action]
+Description=Loading current kernel modules to memory...
+
+When=PreTransaction
+
+Depends=sh
+Depends=coreutils
+
+Exec=/usr/share/libalpm/scripts/kmod-load-pre

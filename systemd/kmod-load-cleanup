@@ -1,0 +1,9 @@
+#!/bin/sh
+# vim:ft=sh:noet:ts=3:sw=3:
+
+for _LINK in /usr/lib/modules/*
+do
+	if [ -L "$_LINK" ] && [ ! -e "$(readlink -- "$_LINK")" ]
+	then rm -f -- "$_LINK"
+	fi
+done; unset -v _LINK

@@ -1,0 +1,11 @@
+#!/bin/sh
+# vim:ft=sh:noet:ts=3:sw=3:
+
+KVER="${KVER:-$(uname -r)}"
+if [ -e /run/kernel ]
+then
+	if [ ! -e "/usr/lib/modules/$KVER" ]
+	then ln -sT -- /run/kernel "/usr/lib/modules/$KVER"
+	else rm -r /run/kernel
+	fi
+fi

@@ -1,0 +1,19 @@
+# vim:ft=confini:
+
+[Trigger]
+Type=Path
+
+Operation=Install
+Operation=Upgrade
+
+Target=usr/lib/modules/*/vmlinuz
+
+[Action]
+Description=Symlink kernel modules...
+
+When=PostTransaction
+
+Depends=sh
+Depends=coreutils
+
+Exec=/usr/share/libalpm/scripts/kmod-load-post
